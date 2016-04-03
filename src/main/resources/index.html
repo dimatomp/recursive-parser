@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Recursive parsing of logical functions</title>
+    <link rel="stylesheet" href="Treant.css" type="text/css"/>
+    <script language="JavaScript" src="raphael-min.js"></script>
+    <script language="JavaScript" src="jquery-2.2.2.js"></script>
+    <script language="JavaScript" src="Treant.js"></script>
+    <script language="JavaScript" src="traverse.js"></script>
+    <script language="JavaScript" src="buildtree.js"></script>
+</head>
+<body>
+<form name="input" accept-charset="utf-8" action="javascript:buildTree();">
+    Enter the expression:<br>
+    <input type="text" name="expression"/>
+    <input type="submit" value="Parse it"/>
+</form>
+<hr>
+<div id="parse-tree" style="width: 100%; position: absolute; min-height: 100%"></div>
+</body>
+</html>
