@@ -10,11 +10,10 @@ import javax.servlet.http.HttpServletResponse
 /**
  * Created by dimatomp on 29.03.16.
  */
+private val mapper: ObjectMapper = jacksonObjectMapper()
 
 @WebServlet(value = "/buildtree")
 class JsonServlet: HttpServlet() {
-    private val mapper: ObjectMapper = jacksonObjectMapper()
-
     override fun doPost(req: HttpServletRequest?, resp: HttpServletResponse?) {
         val analyzer: LexicalAnalyzer<LogicalToken> = LogicalAnalyzer(req!!.reader)
         val result = LogicalParser.buildTree(analyzer)
