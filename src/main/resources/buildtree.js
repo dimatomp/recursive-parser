@@ -12,6 +12,7 @@ function buildTree() {
         if (this.key == 'text')
             this.update({'name': x})
     })
+    response.collapsed = true
     if (currentTree !== undefined)
         currentTree.destroy()
     currentTree = new Treant({

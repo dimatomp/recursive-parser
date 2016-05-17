@@ -1,0 +1,19 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+.flex-parent {
+    display: flex;
+
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+.tree {
+    overflow-x: auto;
+    overflow-y: auto;
+    flex: 1 100%
+}

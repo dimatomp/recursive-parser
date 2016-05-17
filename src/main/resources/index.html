@@ -2,21 +2,29 @@
 <html>
 <head>
     <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width">
     <title>Recursive parsing of logical functions</title>
     <link rel="stylesheet" href="Treant.css" type="text/css"/>
-    <script language="JavaScript" src="raphael-min.js"></script>
-    <script language="JavaScript" src="jquery-2.2.2.js"></script>
-    <script language="JavaScript" src="Treant.js"></script>
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/perfect-scrollbar.css" type="text/css"/>
+    <link rel="stylesheet" href="index.css" type="text/css"/>
+
     <script language="JavaScript" src="traverse.js"></script>
+    <script language="JavaScript" src="vendor/raphael.js"></script>
+    <script language="JavaScript" src="Treant.js"></script>
+    <script language="JavaScript" src="vendor/jquery.min.js"></script>
+    <script language="JavaScript" src="vendor/jquery.mousewheel.js"></script>
+    <script language="JavaScript" src="vendor/jquery.easing.js"></script>
+    <script language="JavaScript" src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script language="JavaScript" src="buildtree.js"></script>
 </head>
-<body>
-<form name="input" accept-charset="utf-8" action="javascript:buildTree();">
-    Enter the expression:<br>
-    <input type="text" name="expression"/>
-    <input type="submit" value="Parse it"/>
-</form>
-<hr>
-<div id="parse-tree" style="width: 100%; position: absolute; min-height: 100%"></div>
+<body class="flex-parent">
+<div>
+    <form name="input" accept-charset="utf-8" action="javascript:buildTree();">
+        Enter the expression:<br>
+        <input type="text" name="expression"/>
+        <input type="submit" value="Parse it"/>
+    </form>
+</div>
+<div class="chart tree" id="parse-tree"></div>
 </body>
 </html>
