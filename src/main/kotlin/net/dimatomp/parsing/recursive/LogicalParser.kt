@@ -51,6 +51,11 @@ enum class LogicalNonterminal: Nonterminal<LogicalToken> {
                 analyzer.nextToken()
                 parseTree("UNIT", parseTree(L_BRACKET.text.toString()), inside, parseTree(R_BRACKET.text.toString()))
             }
+            TILDA -> {
+                if (analyzer.nextToken() !is LogicalNameChar)
+                    throw IllegalStateException("Expected name char, got ${analyzer.curToken}")
+                parseTree("UNIT", parseTree(TILDA.text.toString()), NAME.buildTree(analyzer))
+            }
             is LogicalNameChar -> parseTree("UNIT", NAME.buildTree(analyzer))
             else -> throw IllegalStateException("At ${analyzer.curPosition}: unexpected symbol '${analyzer.curToken.text}'")
         }
@@ -67,11 +72,14 @@ enum class LogicalNonterminal: Nonterminal<LogicalToken> {
                              token: (LogicalToken) -> Boolean,
                              next: LogicalNonterminal,
                              default: () -> ParseTree = { parseTree(name, parseTree(eps)) }): ParseTree {
-        return if (token(analyzer.curToken)) {
-            val text = analyzer.curToken.text
-            analyzer.nextToken()
-            parseTree(name, parseTree("$text"), next.buildTree(analyzer))
-        } else default()
+        return when {
+            token(analyzer.curToken) -> {
+                val text = analyzer.curToken.text
+                analyzer.nextToken()
+                parseTree(name, parseTree(text.toString()), next.buildTree(analyzer))
+            }
+            else -> default()
+        }
     }
 
     protected fun matchPrime(analyzer: LexicalAnalyzer<LogicalToken>,

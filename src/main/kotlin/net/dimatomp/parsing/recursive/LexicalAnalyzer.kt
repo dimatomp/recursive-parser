@@ -27,6 +27,7 @@ interface LogicalToken {
 }
 enum class LogicalReservedToken(override val text: Char): LogicalToken {
     NOT('!'),
+    TILDA('~'),
     AND('&'),
     XOR('^'),
     OR('|'),
